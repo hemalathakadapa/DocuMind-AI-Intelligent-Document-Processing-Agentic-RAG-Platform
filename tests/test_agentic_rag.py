@@ -16,6 +16,13 @@ def test_invalid_invoice_number():
 
 
 def test_invoice_not_found(monkeypatch):
+
+    monkeypatch.setattr(
+        agentic_rag,
+        "load_invoice_json_files",
+        lambda folder: []
+    )
+
     result = agentic_rag.answer_question(
         "What is GST for invoice INV-9999?",
         "invoice-not-found-test-session"
