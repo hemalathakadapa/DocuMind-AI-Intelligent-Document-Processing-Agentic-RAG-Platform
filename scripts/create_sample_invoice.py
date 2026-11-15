@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from invoice_extractor import (
+from src.invoice_extractor import (
     extract_invoice_fields,
     save_invoice_json,
 )
