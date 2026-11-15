@@ -1,4 +1,4 @@
-@'
+
 name: DocuMind AI CI
 
 on:
@@ -33,4 +33,3 @@ jobs:
 
       - name: Run tests
         run: python -m pytest -v
-'@ | Set-Content .github/workflows/ci.yml
