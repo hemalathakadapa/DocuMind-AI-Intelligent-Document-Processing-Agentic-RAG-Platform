@@ -15,7 +15,7 @@ def test_invalid_invoice_number():
     assert result == "Please provide a valid invoice number."
 
 
-def test_invoice_not_found():
+def test_invoice_not_found(monkeypatch):
     result = agentic_rag.answer_question(
         "What is GST for invoice INV-9999?",
         "invoice-not-found-test-session"

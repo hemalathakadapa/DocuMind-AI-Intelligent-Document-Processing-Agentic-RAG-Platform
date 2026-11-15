@@ -50,7 +50,12 @@ def test_invoice_not_found(monkeypatch):
     assert "was not found" in answer
 
 
-def test_invoice_number_missing():
+def test_invoice_number_missing(monkeypatch):
+    monkeypatch.setattr(
+    rag,
+    "load_invoice_json_files",
+    lambda folder: []
+)
 
     answer = rag.answer_question(
         "What is the GST amount?"

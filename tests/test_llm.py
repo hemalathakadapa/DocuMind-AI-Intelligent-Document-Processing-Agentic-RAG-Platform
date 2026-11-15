@@ -1,11 +1,16 @@
+from src import llm_client
 
-from src.llm_client import ask_llm
 
+def test_llm_connection(monkeypatch):
 
-def test_llm_connection():
-    answer = ask_llm("What is GST?")
+    monkeypatch.setattr(
+        llm_client,
+        "ask_llm",
+        lambda prompt: "GST is 2646.36."
+    )
+
+    answer = llm_client.ask_llm("What is GST?")
 
     assert isinstance(answer, str)
     assert len(answer) > 0
-
-    print(answer)
+    assert answer == "GST is 2646.36."
