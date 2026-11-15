@@ -9,15 +9,23 @@ import pytesseract
 from docx import Document
 from PIL import Image
 
-pytesseract.pytesseract.tesseract_cmd = (
-    r"C:\Program Files\Tesseract-OCR\tesseract.exe"
-)
+import shutil
+
+tesseract_path = shutil.which("tesseract")
+
+if tesseract_path:
+    pytesseract.pytesseract.tesseract_cmd = tesseract_path
+elif Path(r"C:\Program Files\Tesseract-OCR\tesseract.exe").exists():
+    pytesseract.pytesseract.tesseract_cmd = (
+        r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+    )
 SUPPORTED_EXTENSIONS = {".pdf", ".docx", ".txt"}
 
 
 def get_file_extension(file_path: str) -> str:
     """Return the extension of a file in lowercase."""
     return Path(file_path).suffix.lower()
+
 
 
 def is_supported_file(file_path: str) -> bool:

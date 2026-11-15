@@ -33,3 +33,11 @@ data/*.db
 data/
 # Local personal debugging script
 check_hemalatha.py
+
+# Local debugging and package logs
+fastapi_error.txt
+installed_packages.txt
+
+# Local debugging and package logs
+fastapi_error.txt
+installed_packages.txt
