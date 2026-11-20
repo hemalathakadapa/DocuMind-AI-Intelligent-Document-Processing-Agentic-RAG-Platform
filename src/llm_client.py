@@ -1,19 +1,19 @@
 
+
+import os
 import json
 import urllib.request
 import urllib.error
 
+OLLAMA_URL = os.getenv(
+    "OLLAMA_URL",
+    "http://localhost:11434/api/generate"
+)
 
-OLLAMA_URL = "http://localhost:11434/api/generate"
 MODEL_NAME = "qwen2.5:1.5b"
 
 
 def ask_llm(prompt):
-    """
-    Send a prompt to the local Ollama model
-    and return its response.
-    """
-
     payload = {
         "model": MODEL_NAME,
         "prompt": prompt,
